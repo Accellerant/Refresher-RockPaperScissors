@@ -58,13 +58,6 @@ function playerChoiceCheck(choice) {
 }
 
 /*
-Returns the computers selection.
-*/
-function computerSelection(){
-
-}
-
-/*
 Play a single round of the game.
 */
 function playRound() {
