@@ -27,9 +27,33 @@ function cpuRandom() {
 }
 
 /*
-Returns the players selection.
+Acquires & returns the players choice.
 */
 function playerSelection(){
+    let playerChoice = '',
+        msg_Prompt = "Rock, Paper, or Scissors?",
+        msg_Error = 'ERROR! Please choose a valid move!';
+
+    // Repeat until the player inputs a valid choice.
+    while(true) {
+        playerChoice = prompt(msg_Prompt, "Scissors").toLowerCase();
+
+        if(playerChoiceCheck(playerChoice)) {
+            break;
+        } else {
+            alert(msg_Error);
+        }
+    }
+
+    return playerChoice;
+}
+
+/*
+Validate if the player choose an acceptable move. 
+*/
+function playerChoiceCheck(choice) {
+    let validChoices = ['rock', 'paper', 'scissors'];
+    return validChoices.includes(choice);
 
 }
 
@@ -44,7 +68,8 @@ function computerSelection(){
 Play a single round of the game.
 */
 function playRound() {
-    console.log(getComputerChoice());
+    getComputerChoice();
+    playerSelection();
 }   
 
 /*
