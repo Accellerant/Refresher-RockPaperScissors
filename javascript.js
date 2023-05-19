@@ -61,8 +61,9 @@ function playerChoiceCheck(choice) {
 Play a single round of the game.
 */
 function playRound() {
-    getComputerChoice();
-    playerSelection();
+    cpu.move = getComputerChoice();
+    user.move = playerSelection();
+
 }   
 
 /*
@@ -75,11 +76,12 @@ function game(){
 /*
 Object Constructor to be utilized by the PC and CPU. 
 */
-function player(type, move) {
+function player(type) {
     this.type = type;
-    this.move = move;
+    this.move = 'N/A';
     this.score = 0;
 }
 
-
+let user = new player('user');
+let cpu = new player('cpu');
 playRound();
