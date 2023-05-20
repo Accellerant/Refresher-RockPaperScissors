@@ -63,8 +63,35 @@ Play a single round of the game.
 function playRound() {
     cpu.move = getComputerChoice();
     user.move = playerSelection();
-
+    compareMoves();
 }   
+
+/*
+Compare the moves between the cpu/player and decide
+who gains a point or if it's a draw.
+*/
+function compareMoves() {
+        // First is always user, second is cpu, third will be who won.
+    let moves = [user.move[0], cpu.move[0]],
+        msg_Draw = 'DRAW!',
+        msg_RvS = 'Rock Beats Scissors!',
+        msg_PvR = 'Paper Beats Rock!',
+        msg_SvP = ' Scissors Beats Paper!';
+
+    if(moves[0] === moves[1]) {
+        alert(msg_Draw);
+        moves.push(-1);
+    } else if (moves.includes('r') && moves.includes('s')) {
+        alert(msg_RvS);
+        moves.push(moves.indexOf('r'));
+    } else if (moves.includes('p') && moves.includes('r')) {
+        alert(msg_PvR);
+        moves.push(moves.indexOf('p'));
+    } else {
+        alert(msg_SvP);
+        moves.push(moves.indexOf('s'));
+    }
+}
 
 /*
 Play as many rounds as desired.
