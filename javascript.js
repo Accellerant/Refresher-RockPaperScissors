@@ -121,7 +121,27 @@ function awardPoint(winner) {
 Play as many rounds as desired.
 */
 function game(){
+    let repeatGame;
 
+    do {
+        playRound();
+        repeatGame = playAgain();
+    } while (repeatGame != 'n');
+
+}
+
+/*
+Has the user input if they want to play again.
+*/
+function playAgain(){
+    let userChoice;
+
+    do {
+        userChoice = prompt("Would you like to play again? Y/N", "Y").toLowerCase();
+        console.warn(userChoice);
+    } while (userChoice != 'y' && userChoice != 'n');
+
+    return userChoice;
 }
 
 /*
@@ -135,4 +155,4 @@ function player(type) {
 
 let user = new player('user');
 let cpu = new player('cpu');
-playRound();
+game();
