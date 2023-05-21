@@ -25,6 +25,10 @@ Required functions from TOP:
 
 getComputerChoice 
 playerSelection
-computerSelection
 playRound
 game()
+
+
+!!!! TO DO !!!!
++ Add a winner message once 3 points are acquired.
++ Clean up compareMoves(). Maybe remove all the alerts?
