@@ -124,11 +124,14 @@ function game(){
     let repeatGame;
 
     do {
-        playRound();
+        do {
+            playRound();
+        } while (user.score != 3 && cpu.score != 3);
+
+        //Reset each players score to 0;
+        user.score = cpu.score = 0;
         repeatGame = playAgain();
     } while (repeatGame != 'n');
-
-}
 
 /*
 Has the user input if they want to play again.
@@ -138,7 +141,6 @@ function playAgain(){
 
     do {
         userChoice = prompt("Would you like to play again? Y/N", "Y").toLowerCase();
-        console.warn(userChoice);
     } while (userChoice != 'y' && userChoice != 'n');
 
     return userChoice;
