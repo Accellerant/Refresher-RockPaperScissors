@@ -76,7 +76,7 @@ function compareMoves() {
         msg_Draw = 'DRAW!',
         msg_RvS = 'Rock Beats Scissors!',
         msg_PvR = 'Paper Beats Rock!',
-        msg_SvP = ' Scissors Beats Paper!';
+        msg_SvP = 'Scissors Beats Paper!';
 
     if(moves[0] === moves[1]) {
         alert(msg_Draw);
@@ -90,6 +90,30 @@ function compareMoves() {
     } else {
         alert(msg_SvP);
         moves.push(moves.indexOf('s'));
+    }
+
+    if(moves[2] != -1)
+        awardPoint(moves[2]);
+
+
+}
+
+/*
+Awards a point based on who won in comparedMoves().
+Should only receive a 0 or 1 for @winner.
+*/
+function awardPoint(winner) {
+    const msg_Warn = `!!!!! WARNING !!!!!
+    awardPoint() recieved a number other than 0 or 1!
+    Number Recieved: ${winner}`;
+
+
+    if(winner === 0) {
+        user.score += 1;
+    } else if (winner === 1) {
+        user.score += 1;
+    } else {
+        console.warn(msg_Warn);
     }
 }
 
