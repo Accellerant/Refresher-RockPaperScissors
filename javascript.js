@@ -30,18 +30,19 @@ function cpuRandom() {
 Acquires & returns the players choice.
 */
 function playerSelection(){
-    let playerChoice = '',
-        msg_Prompt = "Rock, Paper, or Scissors?",
-        msg_Error = 'ERROR! Please choose a valid move!';
+    const MSG_PROMPT = "Rock, Paper, or Scissors?",
+        MSG_ERROR = 'ERROR! Please choose a valid move!';
+
+    let playerChoice = ''
 
     // Repeat until the player inputs a valid choice.
     while(true) {
-        playerChoice = prompt(msg_Prompt, "Scissors").toLowerCase();
+        playerChoice = prompt(MSG_PROMPT, "Scissors").toLowerCase();
 
         if(playerChoiceCheck(playerChoice)) {
             break;
         } else {
-            alert(msg_Error);
+            alert(MSG_ERROR);
         }
     }
 
@@ -71,24 +72,26 @@ Compare the moves between the cpu/player and decide
 who gains a point or if it's a draw.
 */
 function compareMoves() {
-        // First is always user, second is cpu, third will be who won.
-    let moves = [user.move[0], cpu.move[0]],
-        msg_Draw = 'DRAW!',
-        msg_RvS = 'Rock Beats Scissors!',
-        msg_PvR = 'Paper Beats Rock!',
-        msg_SvP = 'Scissors Beats Paper!';
+    const MSG_DRAW = 'DRAW!',
+        MSG_RVS = 'Rock Beats Scissors!',
+        MSG_PVR = 'Paper Beats Rock!',
+        MSG_SVP = 'Scissors Beats Paper!';
+
+    // First is always user, second is cpu, third will be who won.
+    let moves = [user.move[0], cpu.move[0]];
+
 
     if(moves[0] === moves[1]) {
-        alert(msg_Draw);
+        alert(MSG_DRAW);
         moves.push(-1);
     } else if (moves.includes('r') && moves.includes('s')) {
-        alert(msg_RvS);
+        alert(MSG_RVS);
         moves.push(moves.indexOf('r'));
     } else if (moves.includes('p') && moves.includes('r')) {
-        alert(msg_PvR);
+        alert(MSG_PVR);
         moves.push(moves.indexOf('p'));
     } else {
-        alert(msg_SvP);
+        alert(MSG_SVP);
         moves.push(moves.indexOf('s'));
     }
 
@@ -113,7 +116,7 @@ function awardPoint(winner) {
     } else if (winner === 1) {
         cpu.score += 1;
     } else {
-        console.warn(msg_Warn);
+        console.warn(MSG_WARN);
     }
 }
 
