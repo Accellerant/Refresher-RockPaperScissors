@@ -103,7 +103,7 @@ Awards a point based on who won in comparedMoves().
 Should only receive a 0 or 1 for @winner.
 */
 function awardPoint(winner) {
-    const msg_Warn = `!!!!! WARNING !!!!!
+    const MSG_WARN = `!!!!! WARNING !!!!!
     awardPoint() recieved a number other than 0 or 1!
     Number Recieved: ${winner}`;
 
@@ -111,7 +111,7 @@ function awardPoint(winner) {
     if(winner === 0) {
         user.score += 1;
     } else if (winner === 1) {
-        user.score += 1;
+        cpu.score += 1;
     } else {
         console.warn(msg_Warn);
     }
@@ -126,12 +126,34 @@ function game(){
     do {
         do {
             playRound();
-        } while (user.score != 3 && cpu.score != 3);
+        } while (!foundWinner());
 
-        //Reset each players score to 0;
-        user.score = cpu.score = 0;
         repeatGame = playAgain();
     } while (repeatGame != 'n');
+}
+
+/*
+Detect if a player has reached a score of 3. 
+If so, display a message for who won & reset scores for
+each player.
+*/
+function foundWinner () {
+    let winner = 'The CPU';
+
+    if(user.score === 3 || cpu.score === 3) {
+        if(user.score === 3)
+            winner = 'The Player';
+
+        alert(`${winner} has won the game!`);
+
+        cpu.score = user.score = 0;
+
+        return true;
+    }
+
+    return false;
+}
+
 
 /*
 Has the user input if they want to play again.
