@@ -30,5 +30,5 @@ game()
 
 
 !!!! TO DO !!!!
-+ Add a winner message once 3 points are acquired.
 + Clean up compareMoves(). Maybe remove all the alerts?
++ Is there a better way to evaluate who has won or lost?
