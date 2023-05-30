@@ -89,28 +89,39 @@ function compareMoves() {
         winningMove = MOVE_SCISSORS;
     }
 
-    if(winningMove)
-        //awardPoint(winningMove);
+    findWinner(winningMove);
 
 }
 
 /*
-Awards a point based on who won in comparedMoves().
-Should only receive a 0 or 1 for @winner.
+Take in winningMove and determine who won between the two players.
+If the winning move is null, then it's a draw.
+Otherwise, assign who won/lost based on winningMove and then
+display the results.
 */
-function awardPoint(winner) {
-    const MSG_WARN = `!!!!! WARNING !!!!!
-    awardPoint() recieved a number other than 0 or 1!
-    Number Recieved: ${winner}`;
+function findWinner(winningMove) {
+    let userState, cpuState;
 
-
-    if(winner === 0) {
+    if(winningMove === null) {
+        userState = cpuState = "drawed";
+    } else if(user.move === winningMove) {
         user.score += 1;
-    } else if (winner === 1) {
-        cpu.score += 1;
+        userState = "won";
+        cpuState = "lost";
     } else {
-        console.warn(MSG_WARN);
+        cpu.score += 1;
+        userState = "lost";
+        cpuState = "won";
     }
+
+    let results = (`The user ${userState} with ${user.move}!\n` +
+        `The CPU ${cpuState} with ${cpu.move}!\n\n` +
+
+        `Current Score\n` +
+        `Player: ${user.score}\n` +
+        `CPU: ${cpu.score}`);
+
+    alert(results);
 }
 
 /*
