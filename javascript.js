@@ -68,36 +68,29 @@ function playRound() {
 }   
 
 /*
-Compare the moves between the cpu/player and decide
-who gains a point or if it's a draw.
+Compare the moves between the cpu/player. 
+Through this, find the winning move and pass it
+to awardPoint(). Any valid input will allow a point
+to be awarded.
 */
 function compareMoves() {
-    const MSG_DRAW = 'DRAW!',
-        MSG_RVS = 'Rock Beats Scissors!',
-        MSG_PVR = 'Paper Beats Rock!',
-        MSG_SVP = 'Scissors Beats Paper!';
+    const MOVE_ROCK = 'rock', 
+        MOVE_PAPER = 'paper', 
+        MOVE_SCISSORS = 'scissors';
 
-    // First is always user, second is cpu, third will be who won.
-    let moves = [user.move[0], cpu.move[0]];
+    let playerMoves = [user.move, cpu.move],
+        winningMove = null;
 
-
-    if(moves[0] === moves[1]) {
-        alert(MSG_DRAW);
-        moves.push(-1);
-    } else if (moves.includes('r') && moves.includes('s')) {
-        alert(MSG_RVS);
-        moves.push(moves.indexOf('r'));
-    } else if (moves.includes('p') && moves.includes('r')) {
-        alert(MSG_PVR);
-        moves.push(moves.indexOf('p'));
-    } else {
-        alert(MSG_SVP);
-        moves.push(moves.indexOf('s'));
+    if (playerMoves.includes(MOVE_ROCK) && playerMoves.includes(MOVE_SCISSORS)) {
+        winningMove = MOVE_ROCK;
+    } else if (playerMoves.includes(MOVE_PAPER) && playerMoves.includes(MOVE_ROCK)) {
+        winningMove = MOVE_PAPER;
+    } else if (playerMoves.includes(MOVE_SCISSORS) && playerMoves.includes(MOVE_PAPER)){
+        winningMove = MOVE_SCISSORS;
     }
 
-    if(moves[2] != -1)
-        awardPoint(moves[2]);
-
+    if(winningMove)
+        //awardPoint(winningMove);
 
 }
 

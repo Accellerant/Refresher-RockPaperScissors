@@ -30,5 +30,5 @@ game()
 
 
 !!!! TO DO !!!!
-+ Clean up compareMoves(). Maybe remove all the alerts?
-+ Is there a better way to evaluate who has won or lost?
++ Rewrited awardPoint() & rename to findWinner().
+    + Have this function display who won & provide points.
